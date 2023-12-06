@@ -2,3 +2,5 @@ name: zelthicraft-rankup
 version: '${version}'
 main: dev.spozap.zelthicraftrankup.Main
 api-version: '1.20'
+depend:
+  - LuckPerms
