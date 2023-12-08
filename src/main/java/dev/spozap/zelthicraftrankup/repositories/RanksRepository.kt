@@ -30,7 +30,7 @@ class RanksRepository {
 
             if (validator.isValid(rankId)) {
                 println("El rango $rankId es valido")
-                val rank = Rank(rankId)
+                val rank = Rank(rankId, rankId, listOf())
                 ranks[rankId] = rank
             }
 

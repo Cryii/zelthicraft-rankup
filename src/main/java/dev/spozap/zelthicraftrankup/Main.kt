@@ -29,7 +29,6 @@ class Main : JavaPlugin() {
 
         saveDefaultConfig()
 
-
         rankupManager = RankupManager()
 
         Bukkit.getPluginCommand("rangos")!!.setExecutor(RanksCommand(rankupManager))
