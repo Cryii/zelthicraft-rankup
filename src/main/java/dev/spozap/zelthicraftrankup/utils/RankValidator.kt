@@ -4,10 +4,10 @@ import dev.spozap.zelthicraftrankup.Main
 
 class RankValidator {
 
-    private val luckPermsApi = Main.luckPermsAPI
+    private val permissionsApi = Main.permissionsApi
 
-    fun isLuckPermsGroup(groupName: String) : Boolean {
-        return luckPermsApi.groupManager.getGroup(groupName) != null
+    fun isValid(groupName: String) : Boolean {
+        return permissionsApi.groups.contains(groupName)
     }
 
 }

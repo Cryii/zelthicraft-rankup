@@ -1,6 +1,5 @@
 package dev.spozap.zelthicraftrankup.repositories
 
-import dev.spozap.zelthicraftrankup.Main
 import dev.spozap.zelthicraftrankup.models.Rank
 import dev.spozap.zelthicraftrankup.utils.ConfigurationFile
 import dev.spozap.zelthicraftrankup.utils.RankValidator
@@ -29,7 +28,8 @@ class RanksRepository {
 
         for (rankId in configRanks) {
 
-            if (validator.isLuckPermsGroup(rankId)) {
+            if (validator.isValid(rankId)) {
+                println("El rango $rankId es valido")
                 val rank = Rank(rankId)
                 ranks[rankId] = rank
             }
