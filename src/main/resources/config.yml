@@ -1,0 +1,19 @@
+# Definir aqui los rangos que se quieren añadir al sistema de rankup
+# Definir por orden
+ranks:
+  rank1: # El rango este tiene que coincidir con el nombre del rango de LuckPerms
+    rankup-conditions:
+      money: 10000 # Cantidad de dinero
+      time: 200000 # Tiempo en minutos
+    menu-title: "Rango 1" # Nombre que se verá en /rangos
+    menu-lore:
+      - "Este es el mensaje"
+      - "Para el rango 1"
+  rank2:
+    rankup-conditions:
+      money: 10000
+      time: 200000
+    menu-title: "Rango 1"
+    menu-lore:
+      - "Este es el mensaje"
+      - "Para el rango 1"
