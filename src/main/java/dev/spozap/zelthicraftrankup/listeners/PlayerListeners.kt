@@ -31,19 +31,16 @@ class PlayerListeners : Listener {
                 println("entra obsidian")
                 val rankPdc = event.currentItem!!.itemMeta!!.persistentDataContainer
                 val rankId = rankPdc.get(NamespacedKey(Main.plugin, "zr_rankid"), PersistentDataType.STRING) ?: ""
-                println("rankpdc es: $rankId")
                 val rank = ranksManager.getRankById(rankId)
-                println("sig rango es: ${rank?.id}")
                 if (rank != null) {
-                    println("entra rank != null")
                     val nextRank = ranksManager.getNextRank(rankId)
-                    println("el sig rango es : ${nextRank!!.id}")
                     val rankup = Rankup(rank, nextRank, player)
 
                     val possible = rankupManager.isRankupPossible(rankup)
 
                     if (possible) {
                         player.sendMessage("Es posible subir")
+                        rankupManager.rankup(rankup)
                     }
 
                 }

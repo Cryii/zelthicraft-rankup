@@ -27,5 +27,6 @@ class MoneyRankupRequirement(val requiredRankupMoney: Double) : RankupRequiremen
         if (response.transactionSuccess()) {
             player.sendMessage("- $requiredRankupMoney$")
         }
+
     }
 }
