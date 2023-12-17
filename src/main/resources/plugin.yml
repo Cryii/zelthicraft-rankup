@@ -8,3 +8,6 @@ commands:
   rangos:
     usage: /rangos
     description: Muestra un menú con los rangos disponibles para rankup
+  rankup:
+    usage: /rankup <rango>
+    description: Subir al siguiente rango

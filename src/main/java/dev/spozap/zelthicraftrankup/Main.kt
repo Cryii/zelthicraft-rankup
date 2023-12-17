@@ -1,6 +1,7 @@
 package dev.spozap.zelthicraftrankup
 
 import dev.spozap.zelthicraftrankup.commands.RanksCommand
+import dev.spozap.zelthicraftrankup.commands.RankupCommand
 import dev.spozap.zelthicraftrankup.hooks.VaultHook
 import dev.spozap.zelthicraftrankup.listeners.PlayerListeners
 import dev.spozap.zelthicraftrankup.managers.RanksManager
@@ -36,7 +37,7 @@ class Main : JavaPlugin() {
         server.pluginManager.registerEvents(PlayerListeners(), this)
 
         Bukkit.getPluginCommand("rangos")!!.setExecutor(RanksCommand(ranksManager))
-
+        Bukkit.getPluginCommand("rankup")!!.setExecutor(RankupCommand())
 
     }
 

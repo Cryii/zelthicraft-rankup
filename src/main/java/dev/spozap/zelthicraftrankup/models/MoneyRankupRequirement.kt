@@ -15,8 +15,6 @@ class MoneyRankupRequirement(val requiredRankupMoney: Double) : RankupRequiremen
         val offlinePlayer = Bukkit.getOfflinePlayer(player.uniqueId)
         val playerBalance = Main.economyApi.getBalance(offlinePlayer)
 
-        println("Tiene $playerBalance")
-
         return playerBalance >= requiredRankupMoney
     }
 
