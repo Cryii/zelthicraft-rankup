@@ -1,12 +1,15 @@
 package dev.spozap.zelthicraftrankup.menus
 
+import dev.spozap.zelthicraftrankup.Main
 import dev.spozap.zelthicraftrankup.models.Rank
 import org.bukkit.Bukkit
 import org.bukkit.Material
+import org.bukkit.NamespacedKey
 import org.bukkit.event.inventory.InventoryType
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.InventoryHolder
 import org.bukkit.inventory.ItemStack
+import org.bukkit.persistence.PersistentDataType
 
 class RanksMenuHolder(ranks: List<Rank>) : InventoryHolder {
 
@@ -24,16 +27,17 @@ class RanksMenuHolder(ranks: List<Rank>) : InventoryHolder {
     }
 
     private fun placeRank(index: Int, item: ItemStack) {
-        inventory.setItem(index, item)
+        ranksMenu.setItem(index, item)
     }
 
     private fun generateRankItem(rank: Rank): ItemStack {
 
         val rankItem = ItemStack(Material.OBSIDIAN)
         val itemMeta = rankItem.itemMeta!!
+        val itemPdc = itemMeta.persistentDataContainer
 
-        itemMeta.setDisplayName(rank.displayName)
-
+        itemPdc.set(NamespacedKey(Main.plugin, "zr_rankid"), PersistentDataType.STRING, rank.id)
+        itemMeta.setDisplayName(rank.id)
         rankItem.setItemMeta(itemMeta)
 
         return rankItem

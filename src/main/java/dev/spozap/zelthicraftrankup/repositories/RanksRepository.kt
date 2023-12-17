@@ -1,8 +1,11 @@
 package dev.spozap.zelthicraftrankup.repositories
 
+import dev.spozap.zelthicraftrankup.models.MoneyRankupRequirement
 import dev.spozap.zelthicraftrankup.models.Rank
+import dev.spozap.zelthicraftrankup.models.RankupRequirement
 import dev.spozap.zelthicraftrankup.utils.ConfigurationFile
 import dev.spozap.zelthicraftrankup.utils.RankValidator
+import org.bukkit.configuration.ConfigurationSection
 
 class RanksRepository {
 
@@ -28,15 +31,26 @@ class RanksRepository {
 
         for (rankId in configRanks) {
 
-            if (validator.isValid(rankId)) {
-                println("El rango $rankId es valido")
-                val rank = Rank(rankId, rankId, listOf())
-                ranks[rankId] = rank
-            }
+            if (!validator.isValid(rankId)) continue
+
+            val requirements = mutableListOf<RankupRequirement>()
+
+            val rankSection : ConfigurationSection = config.getConfigurationSection("ranks.$rankId")!!
+
+            loadCondition("money", rankSection, requirements) { MoneyRankupRequirement(it.toDouble()) }
+
+            ranks[rankId] = Rank(rankId, requirements, "", listOf())
 
         }
 
         return ranks
+    }
+
+    private fun loadCondition(conditionName: String, section: ConfigurationSection, requirements: MutableList<RankupRequirement>, conditionProvider: (String) -> RankupRequirement) {
+        val conditionValue = section.getString(conditionName)
+        if (conditionValue != null) {
+            requirements.add(conditionProvider.invoke(conditionValue))
+        }
     }
 
     fun save() {

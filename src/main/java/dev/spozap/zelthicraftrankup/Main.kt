@@ -2,6 +2,8 @@ package dev.spozap.zelthicraftrankup
 
 import dev.spozap.zelthicraftrankup.commands.RanksCommand
 import dev.spozap.zelthicraftrankup.hooks.VaultHook
+import dev.spozap.zelthicraftrankup.listeners.PlayerListeners
+import dev.spozap.zelthicraftrankup.managers.RanksManager
 import dev.spozap.zelthicraftrankup.managers.RankupManager
 import net.milkbowl.vault.economy.Economy
 import net.milkbowl.vault.permission.Permission
@@ -10,14 +12,13 @@ import org.bukkit.plugin.java.JavaPlugin
 
 class Main : JavaPlugin() {
 
-    private lateinit var rankupManager: RankupManager
 
     companion object {
         lateinit var plugin : Main
-
+        lateinit var ranksManager: RanksManager
+        lateinit var rankupManager: RankupManager
         lateinit var permissionsApi : Permission
         lateinit var economyApi : Economy
-
     }
 
     override fun onEnable() {
@@ -27,16 +28,20 @@ class Main : JavaPlugin() {
         permissionsApi = VaultHook.permissions
         economyApi = VaultHook.economy
 
-        saveDefaultConfig()
-
+        ranksManager = RanksManager()
         rankupManager = RankupManager()
 
-        Bukkit.getPluginCommand("rangos")!!.setExecutor(RanksCommand(rankupManager))
+        saveDefaultConfig()
+
+        server.pluginManager.registerEvents(PlayerListeners(), this)
+
+        Bukkit.getPluginCommand("rangos")!!.setExecutor(RanksCommand(ranksManager))
+
 
     }
 
     override fun onDisable() {
         // Plugin shutdown logic
-        rankupManager.saveRanks()
+        ranksManager.saveRanks()
     }
 }

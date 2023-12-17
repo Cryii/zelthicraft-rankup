@@ -1,22 +1,15 @@
 package dev.spozap.zelthicraftrankup.managers
 
-import dev.spozap.zelthicraftrankup.menus.RanksMenuHolder
-import dev.spozap.zelthicraftrankup.models.Rank
-import dev.spozap.zelthicraftrankup.repositories.RanksRepository
-import org.bukkit.entity.Player
+import dev.spozap.zelthicraftrankup.Main
+import dev.spozap.zelthicraftrankup.models.Rankup
 
-class RankupManager {
+class RankupManager(val plugin : Main = Main.plugin) {
 
-    private val repository : RanksRepository = RanksRepository()
-    private var ranks: LinkedHashMap<String, Rank> = repository.load()
-
-    fun showRanks(player: Player) {
-        val invHolder = RanksMenuHolder(ranks.values.toList())
-        player.openInventory(invHolder.inventory)
-    }
-
-    fun saveRanks() {
-        repository.save()
+    fun isRankupPossible(rankup: Rankup) : Boolean {
+        if (rankup.to == null) return  false
+        val rankRequirements = rankup.to.requirements
+        println("requirements size ${rankRequirements.size}")
+        return rankRequirements.all { requirement -> requirement.isMet(rankup.player) }
     }
 
 }
