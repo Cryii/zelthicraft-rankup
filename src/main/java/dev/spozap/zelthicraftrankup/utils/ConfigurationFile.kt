@@ -1,6 +1,6 @@
 package dev.spozap.zelthicraftrankup.utils
 
-import dev.spozap.zelthicraftrankup.Main
+import dev.spozap.zelthicraftrankup.ZCRankup
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.configuration.file.YamlConfiguration
 import java.io.File
@@ -11,7 +11,7 @@ class ConfigurationFile(private val fileName: String) {
     lateinit var fileConfiguration: FileConfiguration
 
     fun setup() {
-        file = File(Main.plugin.dataFolder, "$fileName.yml")
+        file = File(ZCRankup.plugin.dataFolder, "$fileName.yml")
 
         if (!file.exists()) {
             try {

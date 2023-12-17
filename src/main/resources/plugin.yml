@@ -1,6 +1,6 @@
 name: zelthicraft-rankup
 version: '${version}'
-main: dev.spozap.zelthicraftrankup.Main
+main: dev.spozap.zelthicraftrankup.ZCRankup
 api-version: '1.20'
 depend:
   - Vault

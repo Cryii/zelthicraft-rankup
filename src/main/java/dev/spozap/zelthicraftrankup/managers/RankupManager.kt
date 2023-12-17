@@ -1,11 +1,11 @@
 package dev.spozap.zelthicraftrankup.managers
 
-import dev.spozap.zelthicraftrankup.Main
+import dev.spozap.zelthicraftrankup.ZCRankup
 import dev.spozap.zelthicraftrankup.models.Rankup
 import dev.spozap.zelthicraftrankup.models.RankupRequirement
 import org.bukkit.entity.Player
 
-class RankupManager(val plugin : Main = Main.plugin) {
+class RankupManager(val plugin : ZCRankup = ZCRankup.plugin) {
 
     fun isRankupPossible(rankup: Rankup) : Boolean {
         if (rankup.to == null) return  false
@@ -18,8 +18,8 @@ class RankupManager(val plugin : Main = Main.plugin) {
         val requirements = rankup.to!!.requirements
         executeRankupRequirements(requirements, rankup.player)
 
-        Main.permissionsApi.playerAddGroup(null, rankup.player, rankup.to.id)
-        Main.permissionsApi.playerRemoveGroup(null, rankup.player, rankup.from.id)
+        ZCRankup.permissionsApi.playerAddGroup(null, rankup.player, rankup.to.id)
+        ZCRankup.permissionsApi.playerRemoveGroup(null, rankup.player, rankup.from.id)
 
     }
 

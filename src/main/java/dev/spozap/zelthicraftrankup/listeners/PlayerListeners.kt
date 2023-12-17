@@ -1,6 +1,6 @@
 package dev.spozap.zelthicraftrankup.listeners
 
-import dev.spozap.zelthicraftrankup.Main
+import dev.spozap.zelthicraftrankup.ZCRankup
 import dev.spozap.zelthicraftrankup.menus.RanksMenuHolder
 import dev.spozap.zelthicraftrankup.models.Rankup
 import org.bukkit.Material
@@ -13,8 +13,8 @@ import org.bukkit.persistence.PersistentDataType
 
 class PlayerListeners : Listener {
 
-    private val ranksManager = Main.ranksManager
-    private val rankupManager = Main.rankupManager
+    private val ranksManager = ZCRankup.ranksManager
+    private val rankupManager = ZCRankup.rankupManager
 
     @EventHandler
     fun onMenuClick(event: InventoryClickEvent) {
@@ -30,7 +30,7 @@ class PlayerListeners : Listener {
             Material.OBSIDIAN -> {
                 println("entra obsidian")
                 val rankPdc = event.currentItem!!.itemMeta!!.persistentDataContainer
-                val rankId = rankPdc.get(NamespacedKey(Main.plugin, "zr_rankid"), PersistentDataType.STRING) ?: ""
+                val rankId = rankPdc.get(NamespacedKey(ZCRankup.plugin, "zr_rankid"), PersistentDataType.STRING) ?: ""
                 val rank = ranksManager.getRankById(rankId)
                 if (rank != null) {
                     val nextRank = ranksManager.getNextRank(rankId)

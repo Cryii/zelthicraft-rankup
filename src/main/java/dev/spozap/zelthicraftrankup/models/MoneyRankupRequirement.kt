@@ -1,6 +1,6 @@
 package dev.spozap.zelthicraftrankup.models
 
-import dev.spozap.zelthicraftrankup.Main
+import dev.spozap.zelthicraftrankup.ZCRankup
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 
@@ -13,14 +13,14 @@ class MoneyRankupRequirement(val requiredRankupMoney: Double) : RankupRequiremen
     override fun isMet(player: Player): Boolean {
 
         val offlinePlayer = Bukkit.getOfflinePlayer(player.uniqueId)
-        val playerBalance = Main.economyApi.getBalance(offlinePlayer)
+        val playerBalance = ZCRankup.economyApi.getBalance(offlinePlayer)
 
         return playerBalance >= requiredRankupMoney
     }
 
     override fun execute(player: Player) {
         val offlinePlayer = Bukkit.getOfflinePlayer(player.uniqueId)
-        val response = Main.economyApi.withdrawPlayer(offlinePlayer, requiredRankupMoney)
+        val response = ZCRankup.economyApi.withdrawPlayer(offlinePlayer, requiredRankupMoney)
 
         if (response.transactionSuccess()) {
             player.sendMessage("- $requiredRankupMoney$")

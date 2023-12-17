@@ -1,6 +1,6 @@
 package dev.spozap.zelthicraftrankup.commands
 
-import dev.spozap.zelthicraftrankup.Main
+import dev.spozap.zelthicraftrankup.ZCRankup
 import dev.spozap.zelthicraftrankup.models.Rankup
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
@@ -9,8 +9,8 @@ import org.bukkit.entity.Player
 
 class RankupCommand : CommandExecutor {
 
-    private var ranksManager = Main.ranksManager
-    private var rankupManager = Main.rankupManager
+    private var ranksManager = ZCRankup.ranksManager
+    private var rankupManager = ZCRankup.rankupManager
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
 

@@ -1,6 +1,6 @@
 package dev.spozap.zelthicraftrankup.managers
 
-import dev.spozap.zelthicraftrankup.Main
+import dev.spozap.zelthicraftrankup.ZCRankup
 import dev.spozap.zelthicraftrankup.menus.RanksMenuHolder
 import dev.spozap.zelthicraftrankup.models.Rank
 import dev.spozap.zelthicraftrankup.repositories.RanksRepository
@@ -33,18 +33,18 @@ class RanksManager {
     }
 
     fun hasRankupRank(player: Player) : Boolean {
-        return Main.permissionsApi.getPlayerGroups(player).any { rank -> ranks.contains(rank) }
+        return ZCRankup.permissionsApi.getPlayerGroups(player).any { rank -> ranks.contains(rank) }
     }
 
     fun getFirstRankupPlayerRank(player: Player): Rank {
-        val rankName = Main.permissionsApi.getPlayerGroups(player)
+        val rankName = ZCRankup.permissionsApi.getPlayerGroups(player)
                 .first { ranks.containsKey(it) }
         return ranks[rankName]!!
     }
 
     fun hasMaximumRank(player: Player) : Boolean {
         val lastRankId = ranks.values.lastOrNull()?.id ?: ""
-        return Main.permissionsApi.getPlayerGroups(player).contains(lastRankId)
+        return ZCRankup.permissionsApi.getPlayerGroups(player).contains(lastRankId)
     }
 
 

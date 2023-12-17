@@ -11,11 +11,10 @@ import net.milkbowl.vault.permission.Permission
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 
-class Main : JavaPlugin() {
-
+class ZCRankup : JavaPlugin() {
 
     companion object {
-        lateinit var plugin : Main
+        lateinit var plugin : ZCRankup
         lateinit var ranksManager: RanksManager
         lateinit var rankupManager: RankupManager
         lateinit var permissionsApi : Permission
