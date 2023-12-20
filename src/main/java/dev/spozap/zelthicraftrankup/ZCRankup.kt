@@ -1,5 +1,6 @@
 package dev.spozap.zelthicraftrankup
 
+import dev.spozap.zelthicraftrankup.commands.PlayedTimeCommand
 import dev.spozap.zelthicraftrankup.commands.RanksCommand
 import dev.spozap.zelthicraftrankup.commands.RankupCommand
 import dev.spozap.zelthicraftrankup.hooks.VaultHook
@@ -37,7 +38,7 @@ class ZCRankup : JavaPlugin() {
 
         Bukkit.getPluginCommand("rangos")!!.setExecutor(RanksCommand(ranksManager))
         Bukkit.getPluginCommand("rankup")!!.setExecutor(RankupCommand())
-
+        Bukkit.getPluginCommand("tiempojugado")!!.setExecutor(PlayedTimeCommand())
     }
 
     override fun onDisable() {

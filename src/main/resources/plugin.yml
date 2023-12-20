@@ -11,3 +11,6 @@ commands:
   rankup:
     usage: /rankup <rango>
     description: Subir al siguiente rango
+  tiempojugado:
+    usage: /tiempojugado
+    description: Muestra el tiempo jugado
