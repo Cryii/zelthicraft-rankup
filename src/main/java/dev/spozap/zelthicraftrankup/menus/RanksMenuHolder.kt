@@ -2,6 +2,7 @@ package dev.spozap.zelthicraftrankup.menus
 
 import dev.spozap.zelthicraftrankup.ZCRankup
 import dev.spozap.zelthicraftrankup.models.Rank
+import dev.spozap.zelthicraftrankup.utils.ColorUtils
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.NamespacedKey
@@ -37,9 +38,10 @@ class RanksMenuHolder(ranks: List<Rank>) : InventoryHolder {
         val itemPdc = itemMeta.persistentDataContainer
 
         itemPdc.set(NamespacedKey(ZCRankup.plugin, "zr_rankid"), PersistentDataType.STRING, rank.id)
-        itemMeta.setDisplayName(rank.id)
-        rankItem.setItemMeta(itemMeta)
+        itemMeta.setDisplayName(ColorUtils.translate(rank.displayName))
+        itemMeta.lore = ColorUtils.translate(rank.lore)
 
+        rankItem.setItemMeta(itemMeta)
         return rankItem
 
     }

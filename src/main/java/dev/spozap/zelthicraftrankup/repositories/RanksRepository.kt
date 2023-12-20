@@ -37,9 +37,13 @@ class RanksRepository {
 
             val rankSection : ConfigurationSection = config.getConfigurationSection("ranks.$rankId")!!
 
+            val rankDisplayName = rankSection.getString("display-name") ?: ""
+
+            val rankLore : List<String> = rankSection.getStringList("lore")
+
             loadCondition("money", rankSection, requirements) { MoneyRankupRequirement(it.toDouble()) }
 
-            ranks[rankId] = Rank(rankId, requirements, "", listOf())
+            ranks[rankId] = Rank(rankId, requirements, rankDisplayName, rankLore)
 
         }
 
