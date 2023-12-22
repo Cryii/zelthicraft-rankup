@@ -8,8 +8,13 @@ import org.bukkit.entity.Player
 
 class RanksManager {
 
-    private val repository : RanksRepository = RanksRepository()
+    private var repository : RanksRepository = RanksRepository()
     private var ranks: LinkedHashMap<String, Rank> = repository.load()
+
+    fun reload() {
+        repository = RanksRepository()
+        this.ranks = repository.load()
+    }
 
     fun showRanks(player: Player) {
         val menu = RanksMenu(ranks.values.toList())

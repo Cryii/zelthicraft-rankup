@@ -14,3 +14,6 @@ commands:
   tiempojugado:
     usage: /tiempojugado
     description: Muestra el tiempo jugado
+  zcreload:
+    usage: /zcreload
+    description: Recarga el plugin
