@@ -3,6 +3,7 @@ package dev.spozap.zelthicraftrankup.repositories
 import dev.spozap.zelthicraftrankup.models.MoneyRankupRequirement
 import dev.spozap.zelthicraftrankup.models.Rank
 import dev.spozap.zelthicraftrankup.models.RankupRequirement
+import dev.spozap.zelthicraftrankup.models.TimeRankupRequirement
 import dev.spozap.zelthicraftrankup.utils.ConfigurationFile
 import dev.spozap.zelthicraftrankup.utils.RankValidator
 import org.bukkit.configuration.ConfigurationSection
@@ -42,6 +43,7 @@ class RanksRepository {
             val rankLore : List<String> = rankSection.getStringList("lore")
 
             loadCondition("money", rankSection, requirements) { MoneyRankupRequirement(it.toDouble()) }
+            loadCondition("time", rankSection, requirements) { TimeRankupRequirement(it.toLong()) }
 
             ranks[rankId] = Rank(rankId, requirements, rankDisplayName, rankLore)
 

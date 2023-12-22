@@ -18,6 +18,14 @@ class DateUtils {
             return formatDateDiff(calendar, to)
         }
 
+        fun toMinutes(date: Long): Int {
+            val calendar = GregorianCalendar()
+            calendar.timeInMillis = date
+
+            val now = GregorianCalendar()
+            return dateDiff(Calendar.MINUTE, calendar, now, !now.before(calendar))
+        }
+
         fun formatDateDiff(fromDate: Calendar, toDate: Calendar): String {
             var future = false
             if (toDate == fromDate) {
