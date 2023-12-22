@@ -1,7 +1,7 @@
 package dev.spozap.zelthicraftrankup.managers
 
 import dev.spozap.zelthicraftrankup.ZCRankup
-import dev.spozap.zelthicraftrankup.menus.RanksMenuHolder
+import dev.spozap.zelthicraftrankup.menus.RanksMenu
 import dev.spozap.zelthicraftrankup.models.Rank
 import dev.spozap.zelthicraftrankup.repositories.RanksRepository
 import org.bukkit.entity.Player
@@ -12,8 +12,8 @@ class RanksManager {
     private var ranks: LinkedHashMap<String, Rank> = repository.load()
 
     fun showRanks(player: Player) {
-        val invHolder = RanksMenuHolder(ranks.values.toList())
-        player.openInventory(invHolder.inventory)
+        val menu = RanksMenu(ranks.values.toList())
+        menu.open(player)
     }
 
     fun getRankById(id: String) : Rank? {
