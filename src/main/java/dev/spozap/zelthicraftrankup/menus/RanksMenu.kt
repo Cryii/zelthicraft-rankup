@@ -40,9 +40,6 @@ class RanksMenu(ranks: List<Rank>) {
         return ItemBuilder.from(Material.OBSIDIAN)
                 .name(Component.text(ColorUtils.translate(rank.displayName)))
                 .lore(rank.lore.map { loreLine -> Component.text(ColorUtils.translate(loreLine)) })
-                .pdc {
-                    it.set(NamespacedKey(ZCRankup.plugin, "zr_rankid"), PersistentDataType.STRING, rank.id)
-                }
                 .asGuiItem()
     }
 
