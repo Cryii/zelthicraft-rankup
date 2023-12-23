@@ -2,6 +2,7 @@ package dev.spozap.zelthicraftrankup.commands
 
 import dev.spozap.zelthicraftrankup.ZCRankup
 import dev.spozap.zelthicraftrankup.constants.Permissions
+import dev.spozap.zelthicraftrankup.managers.ConfigManager
 import dev.spozap.zelthicraftrankup.models.Rankup
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
@@ -20,17 +21,17 @@ class RankupCommand : CommandExecutor {
         val player = sender
 
         if (!player.hasPermission(Permissions.RANKUP_COMMAND)) {
-            player.sendMessage("No tienes permisos para ejecutar este comando")
+            player.sendMessage(ConfigManager.NO_PERMISSIONS)
             return true
         }
 
         if (!ranksManager.hasRankupRank(player = sender)) {
-            player.sendMessage("No tienes ningun rango disponible para hacer rankup!")
+            player.sendMessage(ConfigManager.NO_RANKUP_AVAILABLE)
             return true
         }
 
         if (ranksManager.hasMaximumRank(sender)) {
-            player.sendMessage("Ya tienes el rango maximo")
+            player.sendMessage(ConfigManager.MAXIMUM_RANK)
             return true
         }
 
@@ -42,7 +43,7 @@ class RankupCommand : CommandExecutor {
         val possible = rankupManager.isRankupPossible(rankup)
 
         if (!possible) {
-            player.sendMessage("No cumples los requerimientos para hacer el rankup")
+            player.sendMessage(ConfigManager.REQUISITES_NOT_MEET)
             return true
         }
 

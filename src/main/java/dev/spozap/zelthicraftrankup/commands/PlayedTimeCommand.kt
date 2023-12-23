@@ -1,6 +1,7 @@
 package dev.spozap.zelthicraftrankup.commands
 
 import dev.spozap.zelthicraftrankup.constants.Permissions
+import dev.spozap.zelthicraftrankup.managers.ConfigManager
 import dev.spozap.zelthicraftrankup.utils.DateUtils
 import org.bukkit.Statistic
 import org.bukkit.command.Command
@@ -16,7 +17,7 @@ class PlayedTimeCommand : CommandExecutor {
         val player = sender
 
         if (!player.hasPermission(Permissions.PLAYED_TIME_COMMAND)) {
-            player.sendMessage("No tienes permisos para ejecutar este comando")
+            player.sendMessage(ConfigManager.NO_PERMISSIONS)
             return true
         }
 

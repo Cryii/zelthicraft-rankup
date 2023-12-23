@@ -2,8 +2,8 @@ package dev.spozap.zelthicraftrankup.commands
 
 import dev.spozap.zelthicraftrankup.ZCRankup
 import dev.spozap.zelthicraftrankup.constants.Permissions
+import dev.spozap.zelthicraftrankup.managers.ConfigManager
 import dev.spozap.zelthicraftrankup.managers.RanksManager
-import org.bukkit.Statistic
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
@@ -17,7 +17,7 @@ class RanksCommand(private val ranksManager: RanksManager = ZCRankup.ranksManage
         val player = sender
 
         if (!player.hasPermission(Permissions.RANKS_COMMAND)) {
-            player.sendMessage("No tienes permisos para ejecutar este comando")
+            player.sendMessage(ConfigManager.NO_PERMISSIONS)
             return true
         }
 

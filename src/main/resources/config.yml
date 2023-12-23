@@ -1,19 +1,9 @@
-# Definir aqui los rangos que se quieren añadir al sistema de rankup
-# Definir por orden
-ranks:
-  rank1: # El rango este tiene que coincidir con el nombre del rango de LuckPerms
-    rankup-conditions:
-      money: 10000 # Cantidad de dinero
-      time: 200000 # Tiempo en minutos
-    menu-title: "Rango 1" # Nombre que se verá en /rangos
-    menu-lore:
-      - "Este es el mensaje"
-      - "Para el rango 1"
-  rank2:
-    rankup-conditions:
-      money: 10000
-      time: 200000
-    menu-title: "Rango 1"
-    menu-lore:
-      - "Este es el mensaje"
-      - "Para el rango 1"
+##
+## ZCRankup by Xx_EvilMelon_xX <3
+##
+
+commands-prefix: "&3&l{ ZCRankup }"
+no-permissions: "&4No tienes permisos para ejecutar este comando!"
+no-rankup-available: "&4No tienes ningun rango disponible para subir"
+maximum-rank: "&4Ya tienes el rango máximo"
+requisites-not-meet: "&4No cumples con los requisitos para hacer rankup"
