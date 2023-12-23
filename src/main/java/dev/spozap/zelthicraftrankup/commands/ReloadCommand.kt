@@ -2,6 +2,7 @@ package dev.spozap.zelthicraftrankup.commands
 
 import dev.spozap.zelthicraftrankup.ZCRankup
 import dev.spozap.zelthicraftrankup.constants.Permissions
+import dev.spozap.zelthicraftrankup.managers.ConfigManager
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
@@ -15,7 +16,10 @@ class ReloadCommand : CommandExecutor {
         }
 
         sender.sendMessage("ZCRankup recargado correctamente")
+
         ZCRankup.ranksManager.reload()
+        ConfigManager.reloadConfig()
+
         return true
     }
 }

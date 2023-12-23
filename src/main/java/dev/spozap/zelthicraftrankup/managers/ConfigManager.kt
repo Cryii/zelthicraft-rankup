@@ -9,14 +9,14 @@ class ConfigManager {
 
     companion object {
 
-        private val config : FileConfiguration = ZCRankup.plugin.config
+        private var config : FileConfiguration = ZCRankup.plugin.config
 
 
-        val PREFIX = load(ConfigMessageKeys.PREFIX)
-        val NO_PERMISSIONS = loadWithPrefix(ConfigMessageKeys.NO_PERMISSIONS)
-        val NO_RANKUP_AVAILABLE = loadWithPrefix(ConfigMessageKeys.NO_RANKUP_AVAILABLE)
-        val MAXIMUM_RANK = loadWithPrefix(ConfigMessageKeys.MAXIMUM_RANK)
-        val REQUISITES_NOT_MEET = loadWithPrefix(ConfigMessageKeys.REQUISITES_NOT_MEET)
+        var PREFIX = load(ConfigMessageKeys.PREFIX)
+        var NO_PERMISSIONS = loadWithPrefix(ConfigMessageKeys.NO_PERMISSIONS)
+        var NO_RANKUP_AVAILABLE = loadWithPrefix(ConfigMessageKeys.NO_RANKUP_AVAILABLE)
+        var MAXIMUM_RANK = loadWithPrefix(ConfigMessageKeys.MAXIMUM_RANK)
+        var REQUISITES_NOT_MEET = loadWithPrefix(ConfigMessageKeys.REQUISITES_NOT_MEET)
 
         private fun load(messageKey: String) : String {
             return decorate(config.getString(messageKey, "")!!)
@@ -28,6 +28,17 @@ class ConfigManager {
 
         private fun decorate(message: String) : String {
             return ColorUtils.translate(message)
+        }
+
+        fun reloadConfig() {
+            ZCRankup.plugin.reloadConfig()
+            config = ZCRankup.plugin.config
+
+            PREFIX = load(ConfigMessageKeys.PREFIX)
+            NO_PERMISSIONS = loadWithPrefix(ConfigMessageKeys.NO_PERMISSIONS)
+            NO_RANKUP_AVAILABLE = loadWithPrefix(ConfigMessageKeys.NO_RANKUP_AVAILABLE)
+            MAXIMUM_RANK = loadWithPrefix(ConfigMessageKeys.MAXIMUM_RANK)
+            REQUISITES_NOT_MEET = loadWithPrefix(ConfigMessageKeys.REQUISITES_NOT_MEET)
         }
     }
 
