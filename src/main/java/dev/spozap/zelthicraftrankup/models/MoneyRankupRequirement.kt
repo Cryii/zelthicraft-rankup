@@ -1,6 +1,8 @@
 package dev.spozap.zelthicraftrankup.models
 
 import dev.spozap.zelthicraftrankup.ZCRankup
+import dev.spozap.zelthicraftrankup.managers.ConfigManager
+import dev.spozap.zelthicraftrankup.utils.ColorUtils
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 
@@ -19,7 +21,7 @@ class MoneyRankupRequirement(val requiredRankupMoney: Double) : RankupRequiremen
         val response = ZCRankup.economyApi.withdrawPlayer(offlinePlayer, requiredRankupMoney)
 
         if (response.transactionSuccess()) {
-            player.sendMessage("- $requiredRankupMoney$")
+            player.sendMessage("${ConfigManager.PREFIX} -${ColorUtils.translate("&4&l"+requiredRankupMoney)}$")
         }
 
     }

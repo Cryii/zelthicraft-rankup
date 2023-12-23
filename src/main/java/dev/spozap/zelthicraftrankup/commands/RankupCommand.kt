@@ -48,6 +48,8 @@ class RankupCommand : CommandExecutor {
         }
 
         rankupManager.rankup(rankup)
+        player.sendMessage(ConfigManager.RANKUP_SUCCESS)
+
         return true
     }
 }

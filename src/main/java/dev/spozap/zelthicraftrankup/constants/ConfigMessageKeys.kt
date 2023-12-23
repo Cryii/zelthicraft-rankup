@@ -6,6 +6,6 @@ object ConfigMessageKeys {
     val NO_PERMISSIONS = "no-permissions"
     val NO_RANKUP_AVAILABLE = "no-rankup-available"
     val MAXIMUM_RANK = "maximum-rank"
-    val REQUISITES_NOT_MEET = "requisites-not-mees"
-
+    val REQUISITES_NOT_MEET = "requisites-not-meet"
+    val RANKUP_SUCCESS = "rankup-success"
 }

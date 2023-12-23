@@ -17,17 +17,14 @@ class ConfigManager {
         var NO_RANKUP_AVAILABLE = loadWithPrefix(ConfigMessageKeys.NO_RANKUP_AVAILABLE)
         var MAXIMUM_RANK = loadWithPrefix(ConfigMessageKeys.MAXIMUM_RANK)
         var REQUISITES_NOT_MEET = loadWithPrefix(ConfigMessageKeys.REQUISITES_NOT_MEET)
+        var RANKUP_SUCCESS = loadWithPrefix(ConfigMessageKeys.RANKUP_SUCCESS)
 
         private fun load(messageKey: String) : String {
-            return decorate(config.getString(messageKey, "")!!)
+            return ColorUtils.translate(config.getString(messageKey, "")!!)
         }
 
         private fun loadWithPrefix(messageKey: String) : String {
             return PREFIX + load(messageKey)
-        }
-
-        private fun decorate(message: String) : String {
-            return ColorUtils.translate(message)
         }
 
         fun reloadConfig() {
@@ -39,6 +36,7 @@ class ConfigManager {
             NO_RANKUP_AVAILABLE = loadWithPrefix(ConfigMessageKeys.NO_RANKUP_AVAILABLE)
             MAXIMUM_RANK = loadWithPrefix(ConfigMessageKeys.MAXIMUM_RANK)
             REQUISITES_NOT_MEET = loadWithPrefix(ConfigMessageKeys.REQUISITES_NOT_MEET)
+            RANKUP_SUCCESS = loadWithPrefix(ConfigMessageKeys.RANKUP_SUCCESS)
         }
     }
 
