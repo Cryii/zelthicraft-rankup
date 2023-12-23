@@ -6,10 +6,6 @@ import org.bukkit.entity.Player
 
 class MoneyRankupRequirement(val requiredRankupMoney: Double) : RankupRequirement() {
 
-    init {
-        println("Se carga moneyRankupReq con $requiredRankupMoney")
-    }
-
     override fun isMet(player: Player): Boolean {
 
         val offlinePlayer = Bukkit.getOfflinePlayer(player.uniqueId)
