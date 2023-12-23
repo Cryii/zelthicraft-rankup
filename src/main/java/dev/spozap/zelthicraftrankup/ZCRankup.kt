@@ -7,6 +7,7 @@ import dev.spozap.zelthicraftrankup.commands.ReloadCommand
 import dev.spozap.zelthicraftrankup.hooks.VaultHook
 import dev.spozap.zelthicraftrankup.managers.RanksManager
 import dev.spozap.zelthicraftrankup.managers.RankupManager
+import dev.spozap.zelthicraftrankup.utils.ColorUtils
 import net.milkbowl.vault.economy.Economy
 import net.milkbowl.vault.permission.Permission
 import org.bukkit.Bukkit
@@ -33,6 +34,9 @@ class ZCRankup : JavaPlugin() {
         rankupManager = RankupManager()
 
         saveDefaultConfig()
+
+        Bukkit.getConsoleSender().sendMessage(ColorUtils.translate("&3&l[ZCRankup] &aCargado correctamente"))
+        Bukkit.getConsoleSender().sendMessage(ColorUtils.translate("&3&l[ZCRankup] &2Hecho por Xx_EvilMelon_xX &4<33"))
 
         Bukkit.getPluginCommand("rangos")!!.setExecutor(RanksCommand())
         Bukkit.getPluginCommand("rankup")!!.setExecutor(RankupCommand())
