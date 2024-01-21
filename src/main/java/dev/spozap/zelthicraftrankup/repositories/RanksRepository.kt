@@ -40,12 +40,14 @@ class RanksRepository {
 
             val rankDisplayName = rankSection.getString("display-name") ?: ""
 
+            val rankSkullTexture = rankSection.getString("skull-texture") ?: ""
+
             val rankLore : List<String> = rankSection.getStringList("lore")
 
             loadCondition("money", rankSection, requirements) { MoneyRankupRequirement(it.toDouble()) }
             loadCondition("time", rankSection, requirements) { TimeRankupRequirement(it.toLong()) }
 
-            ranks[rankId] = Rank(rankId, requirements, rankDisplayName, rankLore)
+            ranks[rankId] = Rank(rankId, requirements, rankDisplayName, rankLore, rankSkullTexture)
 
         }
 
